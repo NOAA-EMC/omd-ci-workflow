@@ -1,11 +1,14 @@
-# EMC Repository Template
+# NOAA/NWS/Office of Modeling and Development (OMD) GitHub CI Action Workflow
 
-Getting all the right files in the right place can be a pain. 
-This is a simple template repository that you can use to ensure you have all the right files present in your repo.
+This repository contains the GitHub CI action workflow for OMD. 
 
-## Files you need
+Serves as a centralized hub of reusable CI workflow templates designed to standardize pull request checks during development and implementation across all organization projects.
 
-These should be at the top level of your repository:
+## Team
+
+Code Manager: Lin Gan
+
+## Top level of your repository:
 
 * `README.md` - The `README.md` file should have a short section at the bottom
   called "DISCLAIMER", with a really brief statement saying that code is provided on an "as is" basis, and the user assumes responsibility for its use.
