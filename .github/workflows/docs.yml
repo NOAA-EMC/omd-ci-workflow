@@ -22,7 +22,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
         with:
-          path: rrfs-workflow
           submodules: true
 
       - name: Set up Python 3.10
@@ -37,9 +36,9 @@ jobs:
 
       - name: Inject CI Documentation
         run: |
-          cat << 'EOF' > rrfs-workflow/docs/source/ci_guidance.rst
+          cat << 'EOF' > ./docs/source/ci_guidance.rst
           ====================================================================
-          RRFS CI Design & Code Manager Usage Guide
+          CI Design & Code Manager Usage Guide
           These CI pipelines enforce only a subset of the NCO Implementation
           Standards, as not all standards can be fully automated through a CI
           process.
@@ -162,18 +161,18 @@ jobs:
 
           EOF
 
-          if [ -f rrfs-workflow/docs/source/index.rst ]; then
-            if ! grep -q "ci_guidance"                 rrfs-workflow/docs/source/index.rst; then
-              sed -i '/.. toctree::/a \   ci_guidance'                 rrfs-workflow/docs/source/index.rst
+          if [ -f ./docs/source/index.rst ]; then
+            if ! grep -q "ci_guidance" ./docs/source/index.rst; then
+              sed -i '/.. toctree::/a \   ci_guidance' ./docs/source/index.rst
             fi
           fi
 
       - name: Build docs
         run: |
-          cd rrfs-workflow/docs
+          cd ./docs
           sphinx-build source build
 
       - uses: actions/upload-artifact@v4
         with:
-          name: rrfs-workflow docs
-          path: rrfs-workflow/docs/build
+          name: ci-docs
+          path: ./docs/build
